@@ -1,0 +1,1 @@
+D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGameContent\obj\x86\Debug\PacmanGameContent.contentprojResolveAssemblyReference.cache

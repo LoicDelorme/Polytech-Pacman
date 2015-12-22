@@ -104,13 +104,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="resources\images\environment\ghost_wall.png">
-      <Name>ghost_wall</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="resources\images\pacman\pacman_down_0.png">
       <Name>pacman_down_0</Name>
       <Importer>TextureImporter</Importer>
@@ -158,13 +151,13 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="resources\sounds\eaten_bean.wav">
-      <Name>eaten_bean</Name>
+    <Compile Include="resources\sounds\eat_bean.wav">
+      <Name>eat_bean</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="resources\sounds\iron_man.wav">
-      <Name>iron_man</Name>
+    <Compile Include="resources\sounds\invicible.wav">
+      <Name>invicible</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -172,6 +165,13 @@
       <Name>siren</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="resources\font\defaultFont.spritefont">
+      <Name>defaultFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
