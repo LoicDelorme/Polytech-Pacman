@@ -235,6 +235,15 @@
       <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\invicible.xnb</Output>
       <Time>2015-12-22T12:01:04.0370185+01:00</Time>
     </Item>
+    <Item>
+      <Source>resources\images\dead\dead_4.png</Source>
+      <Name>resources\images\dead\dead_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_4.xnb</Output>
+      <Time>2015-12-23T11:33:24.3455173+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{497B1588-F06C-4F4F-BF8C-A3CE69A00F42}</ContentProjectGUID>

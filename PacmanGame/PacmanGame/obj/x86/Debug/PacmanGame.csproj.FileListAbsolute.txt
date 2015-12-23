@@ -40,3 +40,4 @@ D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\obj\x86\Debug\P
 D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\font\defaultFont.xnb
 D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\eat_bean.xnb
 D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\invicible.xnb
+D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_4.xnb

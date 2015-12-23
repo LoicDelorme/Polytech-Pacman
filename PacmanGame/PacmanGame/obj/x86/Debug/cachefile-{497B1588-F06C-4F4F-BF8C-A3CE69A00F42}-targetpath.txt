@@ -24,3 +24,4 @@ Content\resources\sounds\siren.xnb
 Content\resources\font\defaultFont.xnb
 Content\resources\sounds\eat_bean.xnb
 Content\resources\sounds\invicible.xnb
+Content\resources\images\dead\dead_4.xnb
