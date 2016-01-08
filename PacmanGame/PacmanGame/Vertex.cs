@@ -7,14 +7,17 @@ namespace PacmanGame
 {
     class Vertex
     {
+        public static int INFINITY = int.MaxValue;
         private int potential;
         private bool isMark;
+        private Coordinate previous;
         private Coordinate next;
 
         public Vertex()
         {
-            potential = int.MaxValue;
+            potential = INFINITY;
             isMark = false;
+            previous = null;
             next = null;
         }
 
@@ -41,6 +44,19 @@ namespace PacmanGame
             set
             {
                 isMark = value;
+            }
+        }
+
+        public Coordinate Previous
+        {
+            get
+            {
+                return previous;
+            }
+
+            set
+            {
+                previous = value;
             }
         }
 

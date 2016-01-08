@@ -10,20 +10,18 @@ namespace PacmanGame
     class AnimatedObject
     {
         private Texture2D texture;
-        private Vector2 position;
         private Vector2 size;
-        private byte correspondingValue;
+        private Directions.Direction direction;
+        private Vector2 position;
         private Vector2 spawnPoint;
-        private byte oldValue;
 
-        public AnimatedObject(Texture2D texture, Vector2 position, Vector2 size, byte correspondingValue, Vector2 spawnPoint)
+        public AnimatedObject(Texture2D texture, Vector2 size, Directions.Direction direction, Vector2 position, Vector2 spawnPoint)
         {
             this.texture = texture;
-            this.position = position;
             this.size = size;
-            this.correspondingValue = correspondingValue;
+            this.direction = direction;
+            this.position = position;
             this.spawnPoint = spawnPoint;
-            this.oldValue = PacmanGame.EMPTY;
         }
 
         public Texture2D Texture
@@ -36,6 +34,27 @@ namespace PacmanGame
             set
             {
                 texture = value;
+            }
+        }
+
+        public Vector2 Size
+        {
+            get
+            {
+                return size;
+            }
+        }
+
+        public Directions.Direction Direction
+        {
+            get
+            {
+                return direction;
+            }
+
+            set
+            {
+                direction = value;
             }
         }
 
@@ -52,40 +71,11 @@ namespace PacmanGame
             }
         }
 
-        public Vector2 Size
-        {
-            get
-            {
-                return size;
-            }
-        }
-
-        public byte CorrespondingValue
-        {
-            get
-            {
-                return correspondingValue;
-            }
-        }
-
         public Vector2 SpawnPoint
         {
             get
             {
                 return spawnPoint;
-            }
-        }
-
-        public byte OldValue
-        {
-            get
-            {
-                return oldValue;
-            }
-
-            set
-            {
-                oldValue = value;
             }
         }
     }

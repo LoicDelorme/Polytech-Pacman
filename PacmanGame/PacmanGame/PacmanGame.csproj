@@ -74,9 +74,17 @@
   <ItemGroup>
     <Compile Include="AnimatedObject.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="CyanGhost.cs" />
+    <Compile Include="Dijkstra.cs" />
+    <Compile Include="Directions.cs" />
+    <Compile Include="Ghost.cs" />
+    <Compile Include="OrangeGhost.cs" />
+    <Compile Include="Pacman.cs" />
+    <Compile Include="PinkGhost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Launcher.cs" />
     <Compile Include="PacmanGame.cs" />
+    <Compile Include="RedGhost.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>
   <ItemGroup>

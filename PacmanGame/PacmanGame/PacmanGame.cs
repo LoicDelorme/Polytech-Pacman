@@ -5,11 +5,8 @@ using System.Diagnostics;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace PacmanGame
 {
@@ -22,27 +19,17 @@ namespace PacmanGame
         public const byte BEAN = 1;
         public const byte BOOSTER = 2;
         public const byte EMPTY = 3;
-        public const byte PINK_GHOST = 4;
-        public const byte RED_GHOST = 5;
-        public const byte ORANGE_GHOST = 6;
-        public const byte CYAN_GHOST = 7;
-        public const byte PACMAN = 8;
+
+        public static Vector2 DEFAULT_IMAGE_SIZE = new Vector2(20, 20);
+        public static Vector2 DEFAULT_POSITION = new Vector2(0, 0);
+        public static Vector2 DEFAULT_SPAWN_POINT = new Vector2(0, 0);
 
         public static byte DEFAULT_SCORE = 0;
         public static byte DEFAULT_NUMBER_OF_LIFE = 3;
-        public static String DEFAULT_PACMAN_DIRECTION = "left";
-        public static String DEFAULT_GHOST_DIRECTION = "up";
 
         public static int PACMAN_REFRESH_RATE = 160;
         public static int GHOSTS_REFRESH_RATE = 140;
         public static int INVICIBLE_GHOSTS_THREAD_DURATION = 8000;
-
-        public static Vector2 IMAGE_SIZE = new Vector2(20, 20);
-        public static Vector2 SCORE_LABEL_TEXT_POSITION = new Vector2(580, 20);
-        public static Vector2 SCORE_VALUE_TEXT_POSITION = new Vector2(580, 40);
-        public static Vector2 LIFE_LABEL_TEXT_POSITION = new Vector2(580, 80);
-        public static Vector2 LIFE_VALUE_TEXT_POSITION = new Vector2(580, 100);
-        public static Vector2 RESULT_LABEL_TEXT_POSITION = new Vector2(580, 140);
 
         public const byte VX = 31;
         public const byte VY = 28;
@@ -55,31 +42,20 @@ namespace PacmanGame
         private SoundEffect deadPacmanSound;
         private SoundEffect eatBeanSound;
         private SoundEffect invicibleSound;
-        private SoundEffect sirenSound;
 
         private AnimatedObject wall;
         private AnimatedObject bean;
         private AnimatedObject booster;
-        private AnimatedObject pacman;
-        private AnimatedObject cyanGhost;
-        private AnimatedObject orangeGhost;
-        private AnimatedObject pinkGhost;
-        private AnimatedObject redGhost;
+        private Pacman pacman;
+        private Ghost cyanGhost;
+        private Ghost orangeGhost;
+        private Ghost pinkGhost;
+        private Ghost redGhost;
         
         private byte[,] map;
         private int nbLifeRemaining;
         private int currentScore;
-        private bool isPacmanInvicible;
         private int nbBeanRemaining;
-
-        private String pacmanDirection;
-        private String cyanGhostDirection;
-        private String orangeGhostDirection;
-        private String pinkGhostDirection;
-        private String redGhostDirection;
-
-        private bool pacmanTextureState;
-        private bool eatableGhostTextureState;
 
         private Stopwatch pacmanRefreshRateElapsedTime;
         private Stopwatch ghostsRefreshRateElapsedTime;
@@ -104,10 +80,10 @@ namespace PacmanGame
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, EMPTY, EMPTY, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
-                {WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL, EMPTY, PINK_GHOST, RED_GHOST, ORANGE_GHOST, CYAN_GHOST, EMPTY, WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL},
+                {WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
-                {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, BEAN, BEAN, BEAN, PACMAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
+                {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, BEAN, BEAN, BEAN, EMPTY, BEAN, BEAN, BEAN, BEAN, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
                 {WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, BEAN, WALL, WALL, BEAN, WALL, WALL, WALL, WALL, WALL, WALL},
                 {WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL, WALL, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, BEAN, WALL},
@@ -125,17 +101,7 @@ namespace PacmanGame
             
             nbLifeRemaining = DEFAULT_NUMBER_OF_LIFE;
             currentScore = DEFAULT_SCORE;
-            isPacmanInvicible = false;
-            nbBeanRemaining = countNumberOfInitialBeans();
-
-            pacmanDirection = DEFAULT_PACMAN_DIRECTION;
-            cyanGhostDirection = DEFAULT_GHOST_DIRECTION;
-            orangeGhostDirection = DEFAULT_GHOST_DIRECTION;
-            pinkGhostDirection = DEFAULT_GHOST_DIRECTION;
-            redGhostDirection = DEFAULT_GHOST_DIRECTION;
-
-            pacmanTextureState = false;
-            eatableGhostTextureState = false;
+            nbBeanRemaining = countInitialBeans();
 
             pacmanRefreshRateElapsedTime = Stopwatch.StartNew();
             ghostsRefreshRateElapsedTime = Stopwatch.StartNew();
@@ -147,14 +113,14 @@ namespace PacmanGame
             Content.RootDirectory = "Content";
         }
 
-        private int countNumberOfInitialBeans()
+        private int countInitialBeans()
         {
             int nbBeans = 0;
             for(int x = 0; x < VX; x++)
             {
                 for (int y = 0; y < VY; y++)
                 {
-                    if (map[x, y] == BEAN)
+                    if ((map[x, y] == BEAN) || (map[x, y] == BOOSTER))
                     {
                         nbBeans++;
                     }
@@ -182,37 +148,20 @@ namespace PacmanGame
             deadPacmanSound = Content.Load<SoundEffect>(@"resources\sounds\dead_pacman");
             eatBeanSound = Content.Load<SoundEffect>(@"resources\sounds\eat_bean");
             invicibleSound = Content.Load<SoundEffect>(@"resources\sounds\invicible");
-            sirenSound = Content.Load<SoundEffect>(@"resources\sounds\siren");
 
-            wall = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\environment\wall"), new Vector2(0, 0), IMAGE_SIZE, WALL, new Vector2(0, 0));
-            bean = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\environment\bean"), new Vector2(0, 0), IMAGE_SIZE, BEAN, new Vector2(0, 0));
-            booster = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\environment\booster"), new Vector2(0, 0), IMAGE_SIZE, BOOSTER, new Vector2(0, 0));
-            pacman = new AnimatedObject(Content.Load<Texture2D>(computePacmanTexture()), new Vector2(17, 13), IMAGE_SIZE, PACMAN, new Vector2(17, 13));
-            cyanGhost = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\ghosts\cyan_ghost"), new Vector2(14, 15), IMAGE_SIZE, CYAN_GHOST, new Vector2(14, 15));
-            orangeGhost = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\ghosts\orange_ghost"), new Vector2(14, 14), IMAGE_SIZE, ORANGE_GHOST, new Vector2(14, 14));
-            redGhost = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\ghosts\red_ghost"), new Vector2(14, 13), IMAGE_SIZE, RED_GHOST, new Vector2(14, 13));
-            pinkGhost = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\ghosts\pink_ghost"), new Vector2(14, 12), IMAGE_SIZE, PINK_GHOST, new Vector2(14, 12));
-        }
+            wall = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\environment\wall"), DEFAULT_IMAGE_SIZE, Directions.Direction.up, DEFAULT_POSITION, DEFAULT_SPAWN_POINT);
+            bean = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\environment\bean"), DEFAULT_IMAGE_SIZE, Directions.Direction.up, DEFAULT_POSITION, DEFAULT_SPAWN_POINT);
+            booster = new AnimatedObject(Content.Load<Texture2D>(@"resources\images\environment\booster"), DEFAULT_IMAGE_SIZE, Directions.Direction.up, DEFAULT_POSITION, DEFAULT_SPAWN_POINT);
 
-        private string computePacmanTexture()
-        {
-            string computedTexturePath = @"resources\images\pacman\pacman_" + pacmanDirection + "_" + (pacmanTextureState ? "1" : "0");
-            pacmanTextureState = !pacmanTextureState;
-
-            return computedTexturePath;
-        }
-
-        private string computeEatableGhostTexture()
-        {
-            string computedTexturePath = @"resources\images\eatable_ghost\eatable_ghost_" + (eatableGhostTextureState ? "1" : "0");
-            eatableGhostTextureState = !eatableGhostTextureState;
-
-            return computedTexturePath;
+            pacman = new Pacman(Content);
+            cyanGhost = new CyanGhost(Content);
+            orangeGhost = new OrangeGhost(Content);
+            pinkGhost = new PinkGhost(Content);
+            redGhost = new RedGhost(Content);
         }
 
         protected override void UnloadContent()
         {
-
         }
 
         protected override void Update(GameTime gameTime)
@@ -222,13 +171,18 @@ namespace PacmanGame
                 Exit();
             }
 
-            nbBeanRemaining = countNumberOfInitialBeans();
+            if (invicibleThreadElapsedTime.ElapsedMilliseconds >= INVICIBLE_GHOSTS_THREAD_DURATION)
+            {
+                pacman.IsInvincible = false;
+                invicibleThreadElapsedTime.Reset();
+                invincibleThread = null;
+            }
 
             if ((nbLifeRemaining > 0) && (nbBeanRemaining > 0))
             {
-                updateDirection();
+                updatePacmanDirection();
 
-                if (isPacmanInvicible && (ghostsRefreshRateElapsedTime.ElapsedMilliseconds >= GHOSTS_REFRESH_RATE))
+                if (pacman.IsInvincible && (ghostsRefreshRateElapsedTime.ElapsedMilliseconds >= GHOSTS_REFRESH_RATE))
                 {
                     updatePacman();
                     pacmanRefreshRateElapsedTime.Restart();
@@ -245,161 +199,162 @@ namespace PacmanGame
                     updatePacman();
                     pacmanRefreshRateElapsedTime.Restart();
                 }
-
-                if (invicibleThreadElapsedTime.ElapsedMilliseconds >= INVICIBLE_GHOSTS_THREAD_DURATION)
-                {
-                    isPacmanInvicible = false;
-                    invicibleThreadElapsedTime.Reset();
-                    invincibleThread = null;
-                }
             }
 
             base.Update(gameTime);
         }
 
-        private void updateDirection()
+        private void updatePacmanDirection()
         {
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))
             {
-                pacmanDirection = "left";
+                pacman.Direction = Directions.Direction.left;
             }
 
             if (keyboardState.IsKeyDown(Keys.Right))
             {
-                pacmanDirection = "right";
+                pacman.Direction = Directions.Direction.right;
             }
 
             if (keyboardState.IsKeyDown(Keys.Up))
             {
-                pacmanDirection = "up";
+                pacman.Direction = Directions.Direction.up;
             }
 
             if (keyboardState.IsKeyDown(Keys.Down))
             {
-                pacmanDirection = "down";
+                pacman.Direction = Directions.Direction.down;
             }
         }
 
         private void updateGhosts()
         {
-            updateGhost(cyanGhost, ref cyanGhostDirection);
-            updateGhost(orangeGhost, ref orangeGhostDirection);
-            updateGhost(redGhost, ref redGhostDirection);
-            updateGhost(pinkGhost, ref pinkGhostDirection);
+            updateGhost(cyanGhost);
+            updateGhost(orangeGhost);
+            updateGhost(redGhost);
+            updateGhost(pinkGhost);
         }
 
-        private void updateGhost(AnimatedObject ghost, ref string ghostDirection)
+        private void updateGhost(Ghost ghost)
         {
-            byte targetValue;
-            foreach (string currentDirection in getDirections(ghostDirection))
+            ghost.Position = getRandomNewPosition(ghost);
+            //ghost.Position = getNewPosition(ghost, Dijkstra.getDirection(new Coordinate((int)ghost.Position.X, (int)ghost.Position.Y), new Coordinate((int)pacman.Position.X, (int)pacman.Position.Y), VX, VY, map));
+            processPossibleCollision(ghost);
+        }
+
+        private Vector2 getRandomNewPosition(AnimatedObject animatedObject)
+        {
+            List<Directions.Direction> directions = new List<Directions.Direction>();
+            directions.Add(Directions.Direction.up);
+            directions.Add(Directions.Direction.down);
+            directions.Add(Directions.Direction.left);
+            directions.Add(Directions.Direction.right);
+
+            directions.Shuffle();
+
+            foreach (Directions.Direction currentDirection in directions)
             {
-                targetValue = getTargetPositionValue(ghost, currentDirection);
-
-                if (targetValue == PACMAN)
+                if (getTargetValue(animatedObject, currentDirection) != WALL)
                 {
-                    if (isPacmanInvicible)
-                    {
-                        map[(int) ghost.Position.X, (int) ghost.Position.Y] = ghost.OldValue;
-                        eatGhost(ghost);
-                    }
-                    else
-                    {
-                        map[(int) ghost.Position.X, (int) ghost.Position.Y] = ghost.OldValue;
-                        eatByGhost();
-                    }
-
-                    ghost.OldValue = ((targetValue == EMPTY) || (targetValue == BEAN) || (targetValue == BOOSTER) ? targetValue : EMPTY);
-                    break;
+                    return getNewPosition(animatedObject, currentDirection);
                 }
+            }
 
-                if (targetValue != WALL)
+            return animatedObject.SpawnPoint;
+        }
+
+        private void processPossibleCollision(Ghost ghost)
+        {
+            Vector3 ghostUpperLeftCorner = new Vector3(ghost.Position.Y * 20, ghost.Position.X * 20, 0);
+            Vector3 ghostBottomRightCorner = new Vector3((ghost.Position.Y * 20) + ghost.Size.Y, (ghost.Position.X * 20) + ghost.Size.X, 0);
+
+            Vector3 pacmanUpperLeftCorner = new Vector3(pacman.Position.Y * 20, pacman.Position.X * 20, 0);
+            Vector3 pacmanBottomRightCorner = new Vector3((pacman.Position.Y * 20) + pacman.Size.Y, (pacman.Position.X * 20) + pacman.Size.X, 0);
+
+            BoundingBox ghostBoundingBox = new BoundingBox(ghostUpperLeftCorner, ghostBottomRightCorner);
+            BoundingBox pacmanBoundingBox = new BoundingBox(pacmanUpperLeftCorner, pacmanBottomRightCorner);
+
+            if (ghostBoundingBox.Intersects(pacmanBoundingBox))
+            {
+                if (pacman.IsInvincible)
                 {
-                    map[(int) ghost.Position.X, (int) ghost.Position.Y] = ghost.OldValue;
-
-                    ghost.Position = updateAnimatedObjectPosition(ghost, currentDirection);
-                    ghostDirection = currentDirection;
-                    ghost.OldValue = ((targetValue == EMPTY) || (targetValue == BEAN) || (targetValue == BOOSTER) ? targetValue : EMPTY);
-                    break;
+                    eatGhost(ghost);
+                }
+                else
+                {
+                    eatByGhost();
                 }
             }
         }
 
-        private string[] getDirections(string direction)
+        private void eatGhost(Ghost eatenGhost)
         {
-            List<string> directions = new List<string>();
-            directions.Add("left");
-            directions.Add("right");
-            directions.Add("up");
-            directions.Add("down");
-            directions.Remove(direction);
-            directions.Shuffle();
-            directions.Add(direction);
-            directions.Reverse();
+            currentScore += 1000;
+            eatenGhost.Position = eatenGhost.SpawnPoint;
+        }
 
-            return directions.ToArray();
+        private void eatByGhost()
+        {
+            nbLifeRemaining--;
+            pacman.Position = pacman.SpawnPoint;
+
+            playSound(deadPacmanSound);
         }
 
         private void updatePacman()
         {
-            switch (getTargetPositionValue(pacman, pacmanDirection))
+            switch (getTargetValue(pacman, pacman.Direction))
             {
                 case WALL:
                     break;
-                case CYAN_GHOST:
-                    tryEatGhost(cyanGhost);
-                    break;
-                case ORANGE_GHOST:
-                    tryEatGhost(orangeGhost);
-                    break;
-                case RED_GHOST:
-                    tryEatGhost(redGhost);
-                    break;
-                case PINK_GHOST:
-                    tryEatGhost(pinkGhost);
-                    break;
                 case BEAN:
+                    pacman.Position = getNewPosition(pacman, pacman.Direction);
                     map[(int) pacman.Position.X, (int) pacman.Position.Y] = EMPTY;
-                    pacman.Position = updateAnimatedObjectPosition(pacman, pacmanDirection);
                     eatBean();
                     break;
                 case BOOSTER:
+                    pacman.Position = getNewPosition(pacman, pacman.Direction);
                     map[(int) pacman.Position.X, (int) pacman.Position.Y] = EMPTY;
-                    pacman.Position = updateAnimatedObjectPosition(pacman, pacmanDirection);
                     eatBooster();
                     break;
                 case EMPTY:
+                    pacman.Position = getNewPosition(pacman, pacman.Direction);
                     map[(int) pacman.Position.X, (int) pacman.Position.Y] = EMPTY;
-                    pacman.Position = updateAnimatedObjectPosition(pacman, pacmanDirection);
                     break;
                 default:
                     break;
             }
 
-            pacman.Texture = Content.Load<Texture2D>(computePacmanTexture());
+            processPossibleCollision(cyanGhost);
+            processPossibleCollision(orangeGhost);
+            processPossibleCollision(redGhost);
+            processPossibleCollision(pinkGhost);
+
+            pacman.updateTexture();
         }
 
-        private byte getTargetPositionValue(AnimatedObject animatedObject, String direction)
+        private byte getTargetValue(AnimatedObject animatedObject, Directions.Direction direction)
         {
             int xPosition = (int) animatedObject.Position.X;
             int yPosition = (int) animatedObject.Position.Y;
 
             switch (direction)
             {
-                case "left":
+                case Directions.Direction.left:
                     return map[xPosition, yPosition - 1];
-                case "right":
+                case Directions.Direction.right:
                     return map[xPosition, yPosition + 1];
-                case "up":
+                case Directions.Direction.up:
                     return map[xPosition - 1, yPosition];
-                case "down":
+                case Directions.Direction.down:
                     return map[xPosition + 1, yPosition];
                 default:
                     return WALL;
             }
         }
 
-        private Vector2 updateAnimatedObjectPosition(AnimatedObject animatedObject, String direction)
+        private Vector2 getNewPosition(AnimatedObject animatedObject, Directions.Direction direction)
         {
             int xPosition = (int) animatedObject.Position.X;
             int yPosition = (int) animatedObject.Position.Y;
@@ -408,36 +363,36 @@ namespace PacmanGame
 
             switch (direction)
             {
-                case "left":
+                case Directions.Direction.left:
                     yToAdd = -1;
                     break;
-                case "right":
+                case Directions.Direction.right:
                     yToAdd = 1;
                     break;
-                case "up":
+                case Directions.Direction.up:
                     xToAdd = -1;
                     break;
-                case "down":
+                case Directions.Direction.down:
                     xToAdd = 1;
                     break;
                 default:
                     break;
             }
-            
-            map[xPosition + xToAdd, yPosition + yToAdd] = animatedObject.CorrespondingValue;
+
             return new Vector2(xPosition + xToAdd, yPosition + yToAdd);
         }
 
         private void eatBean()
         {
-            playSound(eatBeanSound);
+            nbBeanRemaining--;
             currentScore += 100;
+            playSound(eatBeanSound);
         }
 
         private void eatBooster()
         {
-            playSound(eatBeanSound);
-            isPacmanInvicible = true;
+            eatBean();
+            pacman.IsInvincible = true;
 
             if (invincibleThread == null)
             {
@@ -448,60 +403,24 @@ namespace PacmanGame
             invicibleThreadElapsedTime.Restart();
         }
 
-        private void tryEatGhost(AnimatedObject possibleEatenGhost)
-        {
-            if (isPacmanInvicible)
-            {
-                map[(int) pacman.Position.X, (int) pacman.Position.Y] = EMPTY;
-                pacman.Position = updateAnimatedObjectPosition(pacman, pacmanDirection);
-                eatGhost(possibleEatenGhost);
-            }
-            else
-            {
-                eatByGhost();
-            }
-        }
-
-        private void eatGhost(AnimatedObject eatenGhost)
-        {
-            currentScore += 1000;
-            eatenGhost.OldValue = EMPTY;
-            eatenGhost.Position = eatenGhost.SpawnPoint;
-            map[(int) eatenGhost.Position.X, (int) eatenGhost.Position.Y] = eatenGhost.CorrespondingValue;
-        }
-
-        private void eatByGhost()
-        {
-            map[(int) pacman.Position.X, (int) pacman.Position.Y] = EMPTY;
-
-            if (--nbLifeRemaining > 0)
-            {
-                pacman.Position = pacman.SpawnPoint;
-                map[(int) pacman.Position.X, (int) pacman.Position.Y] = pacman.CorrespondingValue;
-            }
-
-            playSound(deadPacmanSound);
-        }
-
         private void playInvincibleSound()
         {
-            while (isPacmanInvicible)
+            while (pacman.IsInvincible)
             {
                 playSound(invicibleSound);
 
-                string computedEatableGhostTexture = computeEatableGhostTexture();
-                cyanGhost.Texture = Content.Load<Texture2D>(computedEatableGhostTexture);
-                orangeGhost.Texture = Content.Load<Texture2D>(computedEatableGhostTexture);
-                redGhost.Texture = Content.Load<Texture2D>(computedEatableGhostTexture);
-                pinkGhost.Texture = Content.Load<Texture2D>(computedEatableGhostTexture);
+                cyanGhost.updateTexture();
+                orangeGhost.updateTexture();
+                redGhost.updateTexture();
+                pinkGhost.updateTexture();
 
                 Thread.Sleep(GHOSTS_REFRESH_RATE);
             }
 
-            cyanGhost.Texture = Content.Load<Texture2D>(@"resources\images\ghosts\cyan_ghost");
-            orangeGhost.Texture = Content.Load<Texture2D>(@"resources\images\ghosts\orange_ghost");
-            redGhost.Texture = Content.Load<Texture2D>(@"resources\images\ghosts\red_ghost");
-            pinkGhost.Texture = Content.Load<Texture2D>(@"resources\images\ghosts\pink_ghost");
+            cyanGhost.resetTexture();
+            orangeGhost.resetTexture();
+            redGhost.resetTexture();
+            pinkGhost.resetTexture();
         }
 
         private void playSound(SoundEffect soundEffectToPlay)
@@ -525,31 +444,12 @@ namespace PacmanGame
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(font, "Score :", SCORE_LABEL_TEXT_POSITION, Color.White);
-            spriteBatch.DrawString(font, currentScore.ToString(), SCORE_VALUE_TEXT_POSITION, Color.White);
-            spriteBatch.DrawString(font, "Vies :", LIFE_LABEL_TEXT_POSITION, Color.White);
-            spriteBatch.DrawString(font, nbLifeRemaining.ToString(), LIFE_VALUE_TEXT_POSITION, Color.White);
-
-            if (nbBeanRemaining == 0)
-            {
-                spriteBatch.DrawString(font, "Felicitations, vous avez gagne !", RESULT_LABEL_TEXT_POSITION, Color.White);
-            }
-
-            if (nbLifeRemaining == 0)
-            {
-                spriteBatch.DrawString(font, "Dommage, c'est perdu...", RESULT_LABEL_TEXT_POSITION, Color.White);
-            }
-
-            int xPosition;
-            int yPosition;
             Vector2 position;
             for (int x = 0; x < VX; x++)
             {
                 for (int y = 0; y < VY; y++)
                 {
-                    xPosition = x * 20;
-                    yPosition = y * 20;
-                    position = new Vector2(yPosition, xPosition);
+                    position = new Vector2(y * 20, x * 20);
 
                     switch(map[x, y])
                     {
@@ -562,27 +462,29 @@ namespace PacmanGame
                         case BOOSTER:
                             spriteBatch.Draw(booster.Texture, position, Color.White);
                             break;
-                        case EMPTY:
-                            break;
-                        case PINK_GHOST:
-                            spriteBatch.Draw(pinkGhost.Texture, position, Color.White);
-                            break;
-                        case RED_GHOST:
-                            spriteBatch.Draw(redGhost.Texture, position, Color.White);
-                            break;
-                        case ORANGE_GHOST:
-                            spriteBatch.Draw(orangeGhost.Texture, position, Color.White);
-                            break;
-                        case CYAN_GHOST:
-                            spriteBatch.Draw(cyanGhost.Texture, position, Color.White);
-                            break;
-                        case PACMAN:
-                            spriteBatch.Draw(pacman.Texture, position, Color.White);
-                            break;
-                        default:
-                            break;
                     }
                 }
+            }
+
+            spriteBatch.Draw(pacman.Texture, new Vector2(pacman.Position.Y * 20, pacman.Position.X * 20), Color.White);
+            spriteBatch.Draw(pinkGhost.Texture, new Vector2(pinkGhost.Position.Y * 20, pinkGhost.Position.X * 20), Color.White);
+            spriteBatch.Draw(redGhost.Texture, new Vector2(redGhost.Position.Y * 20, redGhost.Position.X * 20), Color.White);
+            spriteBatch.Draw(orangeGhost.Texture, new Vector2(orangeGhost.Position.Y * 20, orangeGhost.Position.X * 20), Color.White);
+            spriteBatch.Draw(cyanGhost.Texture, new Vector2(cyanGhost.Position.Y * 20, cyanGhost.Position.X * 20), Color.White);
+
+            spriteBatch.DrawString(font, "Score :", new Vector2(580, 20), Color.White);
+            spriteBatch.DrawString(font, currentScore.ToString(), new Vector2(580, 40), Color.White);
+            spriteBatch.DrawString(font, "Vies :", new Vector2(580, 80), Color.White);
+            spriteBatch.DrawString(font, nbLifeRemaining.ToString(), new Vector2(580, 100), Color.White);
+
+            if (nbBeanRemaining == 0)
+            {
+                spriteBatch.DrawString(font, "Felicitations, vous avez gagne !", new Vector2(580, 140), Color.White);
+            }
+
+            if (nbLifeRemaining == 0)
+            {
+                spriteBatch.DrawString(font, "Dommage, c'est perdu...", new Vector2(580, 140), Color.White);
             }
 
             spriteBatch.End();
