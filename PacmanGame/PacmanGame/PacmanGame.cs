@@ -57,6 +57,8 @@ namespace PacmanGame
         private int currentScore;
         private int nbBeanRemaining;
 
+        private Random generator;
+
         private Stopwatch pacmanRefreshRateElapsedTime;
         private Stopwatch ghostsRefreshRateElapsedTime;
         private Stopwatch invicibleThreadElapsedTime;
@@ -102,6 +104,8 @@ namespace PacmanGame
             nbLifeRemaining = DEFAULT_NUMBER_OF_LIFE;
             currentScore = DEFAULT_SCORE;
             nbBeanRemaining = countInitialBeans();
+
+            generator = new Random();
 
             pacmanRefreshRateElapsedTime = Stopwatch.StartNew();
             ghostsRefreshRateElapsedTime = Stopwatch.StartNew();
@@ -239,7 +243,16 @@ namespace PacmanGame
         private void updateGhost(Ghost ghost)
         {
             ghost.Position = getRandomNewPosition(ghost);
-            //ghost.Position = getNewPosition(ghost, Dijkstra.getDirection(new Coordinate((int)ghost.Position.X, (int)ghost.Position.Y), new Coordinate((int)pacman.Position.X, (int)pacman.Position.Y), VX, VY, map));
+
+            //if (generator.NextDouble() > 0.6)
+            //{
+            //    ghost.Position = getNewPosition(ghost, Dijkstra.getDirection(new Coordinate(ghost.Position), new Coordinate(pacman.Position), VX, VY, map));
+            //}
+            //else
+            //{
+            //    ghost.Position = getRandomNewPosition(ghost);
+            //}
+
             processPossibleCollision(ghost);
         }
 

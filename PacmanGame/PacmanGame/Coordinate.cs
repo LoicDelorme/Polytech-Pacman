@@ -49,14 +49,9 @@ namespace PacmanGame
             }
         }
 
-        public static Boolean operator==(Coordinate coordinate1, Coordinate coordinate2)
+        public bool Equals(Coordinate coordinate)
         {
-            return ((coordinate1.x == coordinate2.x) && (coordinate1.y == coordinate2.y));
-        }
-
-        public static Boolean operator !=(Coordinate coordinate1, Coordinate coordinate2)
-        {
-            return ((coordinate1.x != coordinate2.x) && (coordinate1.y != coordinate2.y));
+            return ((x == coordinate.x) && (y == coordinate.y));
         }
     }
 }

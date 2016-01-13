@@ -24,7 +24,7 @@ namespace PacmanGame
             vertexes[end.X, end.Y].Potential = 0;
             Coordinate currentCoordinate = end;
 
-            while (currentCoordinate != departure)
+            while (!currentCoordinate.Equals(departure))
             {
                 Vertex z = vertexes[currentCoordinate.X, currentCoordinate.Y];
                 z.IsMark = true;
@@ -42,7 +42,7 @@ namespace PacmanGame
                     }
                 }
 
-                if (currentCoordinate.Y + 1 < width)
+                if (currentCoordinate.Y + 1 < height)
                 {
                     if (vertexes[currentCoordinate.X, currentCoordinate.Y + 1] != null)
                     {
@@ -68,7 +68,7 @@ namespace PacmanGame
                     }
                 }
 
-                if (currentCoordinate.X + 1 < height)
+                if (currentCoordinate.X + 1 < width)
                 {
                     if (vertexes[currentCoordinate.X + 1, currentCoordinate.Y] != null)
                     {
@@ -82,7 +82,6 @@ namespace PacmanGame
                 }
 
                 int min = Vertex.INFINITY;
-
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
@@ -100,7 +99,13 @@ namespace PacmanGame
             }
 
             Coordinate next = vertexes[currentCoordinate.X, currentCoordinate.Y].Previous;
-            Directions.Direction res = Ghost.DEFAULT_GHOST_DIRECTION;
+            Directions.Direction res = Directions.Direction.up;
+
+            if (next == null)
+            {
+                return res;
+            }
+            
             if (next.X != departure.X)
             {
                 if (next.X > departure.X)
