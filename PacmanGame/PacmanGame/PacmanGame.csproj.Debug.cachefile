@@ -1,3 +1,4 @@
+Content\resources\images\dead\dead_4.xnb
 Content\resources\images\dead\dead_0.xnb
 Content\resources\images\dead\dead_1.xnb
 Content\resources\images\dead\dead_2.xnb
@@ -20,8 +21,7 @@ Content\resources\images\pacman\pacman_right_1.xnb
 Content\resources\images\pacman\pacman_up_0.xnb
 Content\resources\images\pacman\pacman_up_1.xnb
 Content\resources\sounds\dead_pacman.xnb
-Content\resources\sounds\siren.xnb
-Content\resources\font\defaultFont.xnb
 Content\resources\sounds\eat_bean.xnb
 Content\resources\sounds\invicible.xnb
-Content\resources\images\dead\dead_4.xnb
+Content\resources\sounds\siren.xnb
+Content\resources\font\defaultFont.xnb

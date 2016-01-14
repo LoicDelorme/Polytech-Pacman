@@ -27,8 +27,8 @@ namespace PacmanGame
         public static byte DEFAULT_SCORE = 0;
         public static byte DEFAULT_NUMBER_OF_LIFE = 3;
 
-        public static int PACMAN_REFRESH_RATE = 160;
-        public static int GHOSTS_REFRESH_RATE = 140;
+        public static int PACMAN_REFRESH_RATE = 150;
+        public static int GHOSTS_REFRESH_RATE = 180;
         public static int INVICIBLE_GHOSTS_THREAD_DURATION = 8000;
 
         public const byte VX = 31;
@@ -242,16 +242,14 @@ namespace PacmanGame
 
         private void updateGhost(Ghost ghost)
         {
-            ghost.Position = getRandomNewPosition(ghost);
-
-            //if (generator.NextDouble() > 0.6)
-            //{
-            //    ghost.Position = getNewPosition(ghost, Dijkstra.getDirection(new Coordinate(ghost.Position), new Coordinate(pacman.Position), VX, VY, map));
-            //}
-            //else
-            //{
-            //    ghost.Position = getRandomNewPosition(ghost);
-            //}
+            if (generator.NextDouble() > 0.55)
+            {
+                ghost.Position = getNewPosition(ghost, Dijkstra.getDirection(new Coordinate(ghost.Position), new Coordinate(pacman.Position), VX, VY, map));
+            }
+            else
+            {
+                ghost.Position = getRandomNewPosition(ghost);
+            }
 
             processPossibleCollision(ghost);
         }

@@ -2,12 +2,21 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
+      <Source>resources\images\dead\dead_4.png</Source>
+      <Name>resources\images\dead\dead_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_4.xnb</Output>
+      <Time>2015-12-23T11:33:24.3455173+01:00</Time>
+    </Item>
+    <Item>
       <Source>resources\images\dead\dead_0.png</Source>
       <Name>resources\images\dead\dead_0</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_0.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_0.xnb</Output>
       <Time>2015-12-22T11:36:57.9153526+01:00</Time>
     </Item>
     <Item>
@@ -16,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_1.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_1.xnb</Output>
       <Time>2015-12-22T11:36:57.9622785+01:00</Time>
     </Item>
     <Item>
@@ -25,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_2.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_2.xnb</Output>
       <Time>2015-12-22T11:36:57.9622785+01:00</Time>
     </Item>
     <Item>
@@ -34,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_3.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_3.xnb</Output>
       <Time>2015-12-22T11:36:57.9622785+01:00</Time>
     </Item>
     <Item>
@@ -43,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\cyan_ghost.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\cyan_ghost.xnb</Output>
       <Time>2015-12-22T16:32:43.4858823+01:00</Time>
     </Item>
     <Item>
@@ -52,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\orange_ghost.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\orange_ghost.xnb</Output>
       <Time>2015-12-22T11:38:05.3213464+01:00</Time>
     </Item>
     <Item>
@@ -61,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\pink_ghost.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\pink_ghost.xnb</Output>
       <Time>2015-12-22T11:38:05.3369716+01:00</Time>
     </Item>
     <Item>
@@ -70,7 +79,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\red_ghost.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\ghosts\red_ghost.xnb</Output>
       <Time>2015-12-22T11:38:05.3369716+01:00</Time>
     </Item>
     <Item>
@@ -79,7 +88,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\eatable_ghost\eatable_ghost_0.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\eatable_ghost\eatable_ghost_0.xnb</Output>
       <Time>2015-12-22T11:45:11.9522967+01:00</Time>
     </Item>
     <Item>
@@ -88,7 +97,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\eatable_ghost\eatable_ghost_1.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\eatable_ghost\eatable_ghost_1.xnb</Output>
       <Time>2015-12-22T11:45:11.9522967+01:00</Time>
     </Item>
     <Item>
@@ -97,7 +106,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\environment\bean.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\environment\bean.xnb</Output>
       <Time>2015-12-22T11:46:52.997337+01:00</Time>
     </Item>
     <Item>
@@ -106,7 +115,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\environment\booster.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\environment\booster.xnb</Output>
       <Time>2015-12-22T15:49:34.3910649+01:00</Time>
     </Item>
     <Item>
@@ -115,7 +124,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\environment\wall.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\environment\wall.xnb</Output>
       <Time>2015-12-22T11:46:53.0129327+01:00</Time>
     </Item>
     <Item>
@@ -124,7 +133,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_down_0.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_down_0.xnb</Output>
       <Time>2015-12-22T11:57:16.858441+01:00</Time>
     </Item>
     <Item>
@@ -133,7 +142,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_down_1.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_down_1.xnb</Output>
       <Time>2015-12-22T11:57:16.858441+01:00</Time>
     </Item>
     <Item>
@@ -142,7 +151,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_left_0.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_left_0.xnb</Output>
       <Time>2015-12-22T11:57:16.858441+01:00</Time>
     </Item>
     <Item>
@@ -151,7 +160,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_left_1.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_left_1.xnb</Output>
       <Time>2015-12-22T11:57:16.858441+01:00</Time>
     </Item>
     <Item>
@@ -160,7 +169,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_right_0.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_right_0.xnb</Output>
       <Time>2015-12-22T11:57:16.858441+01:00</Time>
     </Item>
     <Item>
@@ -169,7 +178,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_right_1.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_right_1.xnb</Output>
       <Time>2015-12-22T11:57:16.858441+01:00</Time>
     </Item>
     <Item>
@@ -178,7 +187,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_up_0.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_up_0.xnb</Output>
       <Time>2015-12-22T11:57:16.8740661+01:00</Time>
     </Item>
     <Item>
@@ -187,7 +196,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_up_1.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\pacman\pacman_up_1.xnb</Output>
       <Time>2015-12-22T11:57:16.8740661+01:00</Time>
     </Item>
     <Item>
@@ -196,26 +205,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\dead_pacman.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\dead_pacman.xnb</Output>
       <Time>2015-12-22T12:01:04.0213929+01:00</Time>
-    </Item>
-    <Item>
-      <Source>resources\sounds\siren.wav</Source>
-      <Name>resources\sounds\siren</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\siren.xnb</Output>
-      <Time>2015-12-22T12:01:04.0370185+01:00</Time>
-    </Item>
-    <Item>
-      <Source>resources\font\defaultFont.spritefont</Source>
-      <Name>resources\font\defaultFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\font\defaultFont.xnb</Output>
-      <Time>2015-12-22T15:42:19.0752622+01:00</Time>
     </Item>
     <Item>
       <Source>resources\sounds\eat_bean.wav</Source>
@@ -223,7 +214,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\eat_bean.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\eat_bean.xnb</Output>
       <Time>2015-12-22T12:01:04.0213929+01:00</Time>
     </Item>
     <Item>
@@ -232,17 +223,26 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\invicible.xnb</Output>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\invicible.xnb</Output>
       <Time>2015-12-22T12:01:04.0370185+01:00</Time>
     </Item>
     <Item>
-      <Source>resources\images\dead\dead_4.png</Source>
-      <Name>resources\images\dead\dead_4</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Source>resources\sounds\siren.wav</Source>
+      <Name>resources\sounds\siren</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\images\dead\dead_4.xnb</Output>
-      <Time>2015-12-23T11:33:24.3455173+01:00</Time>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\sounds\siren.xnb</Output>
+      <Time>2015-12-22T12:01:04.0370185+01:00</Time>
+    </Item>
+    <Item>
+      <Source>resources\font\defaultFont.spritefont</Source>
+      <Name>resources\font\defaultFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\resources\font\defaultFont.xnb</Output>
+      <Time>2015-12-22T15:42:19.0752622+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -251,10 +251,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGameContent\</RootDirectory>
-      <LoggerRootDirectory>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\</LoggerRootDirectory>
-      <IntermediateDirectory>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>D:\ComputerScience\C#\Workspace\PacmanGame\PacmanGame\PacmanGame\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGameContent\</RootDirectory>
+      <LoggerRootDirectory>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\ComputerScience\C#\Repos\Polytech-Pacman\PacmanGame\PacmanGame\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

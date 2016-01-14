@@ -29,7 +29,7 @@ namespace PacmanGame
                 Vertex z = vertexes[currentCoordinate.X, currentCoordinate.Y];
                 z.IsMark = true;
 
-                if (currentCoordinate.Y > 0)
+                if ((currentCoordinate.Y) > 0)
                 {
                     if (vertexes[currentCoordinate.X, currentCoordinate.Y - 1] != null)
                     {
@@ -42,7 +42,7 @@ namespace PacmanGame
                     }
                 }
 
-                if (currentCoordinate.Y + 1 < height)
+                if ((currentCoordinate.Y + 1) < height)
                 {
                     if (vertexes[currentCoordinate.X, currentCoordinate.Y + 1] != null)
                     {
@@ -55,7 +55,7 @@ namespace PacmanGame
                     }
                 }
 
-                if (currentCoordinate.X > 0)
+                if ((currentCoordinate.X) > 0)
                 {
                     if (vertexes[currentCoordinate.X - 1, currentCoordinate.Y] != null)
                     {
@@ -68,7 +68,7 @@ namespace PacmanGame
                     }
                 }
 
-                if (currentCoordinate.X + 1 < width)
+                if ((currentCoordinate.X + 1) < width)
                 {
                     if (vertexes[currentCoordinate.X + 1, currentCoordinate.Y] != null)
                     {
@@ -98,17 +98,23 @@ namespace PacmanGame
                 }
             }
 
-            Coordinate next = vertexes[currentCoordinate.X, currentCoordinate.Y].Previous;
+            Coordinate next = (vertexes[currentCoordinate.X, currentCoordinate.Y].Previous == null ? currentCoordinate : vertexes[currentCoordinate.X, currentCoordinate.Y].Previous);
             Directions.Direction res = Directions.Direction.up;
 
-            if (next == null)
-            {
-                return res;
-            }
-            
             if (next.X != departure.X)
             {
                 if (next.X > departure.X)
+                {
+                    res = Directions.Direction.down;
+                }
+                else
+                {
+                    res = Directions.Direction.up;
+                }
+            }
+            else
+            {
+                if (next.Y > departure.Y)
                 {
                     res = Directions.Direction.right;
                 }
@@ -116,17 +122,6 @@ namespace PacmanGame
                 {
                     res = Directions.Direction.left;
                 }
-            }
-            else
-            {
-                if (next.Y > departure.Y)
-                {
-                    res = Directions.Direction.down;
-                }
-                else
-                {
-                    res = Directions.Direction.up;
-                }    
             }
 
             return res;
